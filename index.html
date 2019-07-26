@@ -1,1 +1,52 @@
-test
+<html>
+
+<head title="SOSI DICK">
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+
+
+        function setRandomColor() {
+            document.getElementsByTagName("body")[0].style.backgroundColor = getRandomColor()
+        }
+        function setRandomColorText() {
+            document.getElementsByTagName("body")[0].style.color = getRandomColor()
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            setInterval(function () {
+                setRandomColor();
+                setRandomColorText();
+            }, 100)
+        })
+    </script>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+            font-size: calc(6em + 1vw);
+        }
+    </style>
+</head>
+
+<body>
+    Xui sosi
+</body>
+
+</html>
