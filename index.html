@@ -16,6 +16,7 @@
         function setRandomColor() {
             document.getElementsByTagName("body")[0].style.backgroundColor = getRandomColor()
         }
+
         function setRandomColorText() {
             document.getElementsByTagName("body")[0].style.color = getRandomColor()
         }
@@ -40,9 +41,36 @@
         }
 
         body {
+            overflow: hidden;
             display: table-cell;
             vertical-align: middle;
             font-size: calc(6em + 1vw);
+            -webkit-animation: spin 3s ease-in 0.5s infinite alternate;
+            -moz-animation: spin 3s ease-in 0.5s infinite alternate;
+            animation: spin 3s ease-in 0.5s infinite alternate;
+
+        }
+
+        @-moz-keyframes spin {
+            50% {
+                -moz-transform: rotateZ(10800deg);
+                font-size: calc(25em + 1vw);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            50% {
+                -webkit-transform: rotateZ(10800deg);
+                font-size: calc(25em + 1vw);
+            }
+        }
+
+        @keyframes spin {
+            50% {
+                -webkit-transform: rotateZ(10800deg);
+                transform: rotateZ(10800deg);
+                font-size: calc(25em + 1vw);
+            }
         }
     </style>
 </head>
