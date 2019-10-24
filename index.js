@@ -4,6 +4,7 @@ function encode(text) {
     let b64 = btoa(text);
     let enStr = "";
     for (let i = 0; i < b64.length; i++) {
+        if (b64[i] === "=") continue;
         enStr += dictionary[b64[i]];
     }
     return enStr;
@@ -26,7 +27,7 @@ function decode(text, length) {
     return atob(b64);
 }
 
-function generateDictionary(letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=", code = "[ʭ ]", length = 4) {
+function generateDictionary(letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/", code = "[ʭ ]", length = 3) {
     window.dicCode = code;
     window.length = length;
     let obj = {};
@@ -77,7 +78,7 @@ window.onload = () => {
             if (!isSkoba) {
                 dataOutput.value = "[" + encode(dataInput.value) + "]";
             } else {
-                dataOutput.value = decode(dataInput.value.substring(1,dataInput.value.length - 1), 4);
+                dataOutput.value = decode(dataInput.value.substring(1, dataInput.value.length - 1), length);
             }
         } catch (e) {
             dataOutput.value = "Error";
