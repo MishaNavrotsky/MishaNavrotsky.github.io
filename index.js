@@ -43,7 +43,6 @@ function generateDictionary(letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNO
 
     for (let i = 0; i < letters.length; i++) {
         let indexes = addZeros(i.toString(code.length), length);
-        // console.log(indexes);
         let str = "";
         for (let j = 0; j < indexes.length; j++) {
             str += code[parseInt(indexes[j])];
@@ -70,7 +69,6 @@ window.onload = () => {
 
     dataInput.addEventListener("input", () => {
         let isSkoba = dataInput.value[0] === "[" && dataInput.value[dataInput.value.length-1] === "]";
-        console.log(isSkoba);
         for (let i = 0; i < dataInput.value.length; i++) {
             if (!dicCode.includes(dataInput.value[i])) isSkoba = false;
         }
@@ -79,7 +77,6 @@ window.onload = () => {
             if (!isSkoba) {
                 dataOutput.value = "[" + encode(dataInput.value) + "]";
             } else {
-                console.log(dataInput.value.substring(1, dataInput.value.length - 1));
                 dataOutput.value = decode(dataInput.value.substring(1, dataInput.value.length - 1), length);
             }
         } catch (e) {
