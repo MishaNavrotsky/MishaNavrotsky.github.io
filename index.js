@@ -1,17 +1,15 @@
 const dictionary = generateDictionary();
 
 function encode(text) {
-    let b64 = btoa(text);
     let enStr = "";
-    for (let i = 0; i < b64.length; i++) {
-        if (b64[i] === "=") continue;
-        enStr += dictionary[b64[i]];
+    for (let i = 0; i < text.length; i++) {
+        enStr += dictionary[text[i]];
     }
     return enStr;
 }
 
 function decode(text, length) {
-    let b64 = "";
+    let result = "";
     for (let i = 0; i < text.length; i += length) {
         let str = "";
         for (let j = 0; j < length; j++) {
@@ -19,17 +17,18 @@ function decode(text, length) {
         }
         for (let k in dictionary) {
             if (dictionary[k] === str) {
-                b64 += k;
+                result += k;
                 break;
             }
         }
     }
-    return atob(b64);
+    return result;
 }
 
-function generateDictionary(letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/", code = "[ʭ ]", length = 3) {
+function generateDictionary(letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ)(-=?:%;№!\'\"\\,.*#@~`$% ", code = "[| ]", length = 4) {
     window.dicCode = code;
     window.length = length;
+    window.letters = letters;
     let obj = {};
     let n = Math.ceil(Math.log(letters.length) / Math.log(code.length));
     if (n > length) throw "Количество возможных вариантов кодов меньше чем количество букв";
