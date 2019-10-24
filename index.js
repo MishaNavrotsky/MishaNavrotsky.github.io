@@ -68,6 +68,7 @@ window.onload = () => {
     })
     dataInput.addEventListener("dblclick", () => {
         dataInput.value = "";
+        dataOutput.value = "";
     })
     dataInput.addEventListener("input", () => {
         let isSkoba = dataInput.value[0] === "[" && dataInput.value[dataInput.value.length-1] === "]";
