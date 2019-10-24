@@ -71,14 +71,17 @@ window.onload = () => {
         dataOutput.value = "";
     })
     dataInput.addEventListener("input", () => {
-        let isSkoba = dataInput.value[0] === "[" && dataInput.value[dataInput.value.length-1] === "]";
+        let isSkoba = dataInput.value[0] === "[" && dataInput.value[dataInput.value.length - 1] === "]";
         for (let i = 0; i < dataInput.value.length; i++) {
             if (!dicCode.includes(dataInput.value[i])) isSkoba = false;
         }
 
         try {
             if (!isSkoba) {
-                dataOutput.value = "[" + encode(dataInput.value) + "]";
+                if (dataInput.value.length > 0)
+                    dataOutput.value = "[" + encode(dataInput.value) + "]";
+                else
+                    dataOutput.value = "";
             } else {
                 dataOutput.value = decode(dataInput.value.substring(1, dataInput.value.length - 1), length);
             }
