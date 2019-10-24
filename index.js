@@ -77,7 +77,7 @@ window.onload = () => {
             if (!isSkoba) {
                 dataOutput.value = "[" + encode(dataInput.value) + "]";
             } else {
-                dataOutput.value = decode(dataInput.value, 4);
+                dataOutput.value = decode(dataInput.value.substring(1,dataInput.value.length - 1), 4);
             }
         } catch (e) {
             dataOutput.value = "Error";
